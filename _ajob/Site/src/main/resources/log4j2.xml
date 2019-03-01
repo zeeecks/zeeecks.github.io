@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 官网配置详解：http://logging.apache.org/log4j/2.x/manual/appenders.html -->
+<configuration status="warn">	<!-- status=debug可以查看log4j的装配过程 -->
+	<Properties>
+		<Property name="PID">????</Property>
+		<Property name="SYS_NAME">site</Property>
+		<Property name="LOG_PATTERN">%clr{%d{yyyy-MM-dd'T'HH:mm:ss'+08:00'}}%clr{|}%clr{${sys:PID}}%clr{|}%clr{%t}%clr{|}%clr{%5p}%clr{|}%clr{%msg%xEx%n}</Property>
+		<Property name="EVERY_FILE_SIZE">100 MB</Property>
+	</Properties>
+	<Appenders>
+		<!-- 定义输出控制台的配置 -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${LOG_PATTERN}"></PatternLayout>
+		</Console>
+
+		<RollingFile name="errorFile" fileName="/mnt/logs/java/${SYS_NAME}_error.log" filePattern="/mnt/logs/java/${SYS_NAME}_error-%d{yyyy-MM-dd}.log">
+			<Policies>
+				<TimeBasedTriggeringPolicy modulate="true" interval="1" />
+			</Policies>
+			<DefaultRolloverStrategy fileIndex="max" max="5" />
+			<PatternLayout pattern="${LOG_PATTERN}"></PatternLayout>
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+		</RollingFile>
+		
+		<RollingFile name="warnFile" fileName="/mnt/logs/java/${SYS_NAME}_warn.log" filePattern="/mnt/logs/java/${SYS_NAME}_warn-%d{yyyy-MM-dd}.log">
+			<Policies>
+				<TimeBasedTriggeringPolicy modulate="true" interval="1" />
+			</Policies>
+			<DefaultRolloverStrategy fileIndex="max" max="5" />
+			<PatternLayout pattern="${LOG_PATTERN}"></PatternLayout>
+			<Filters>
+				<ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
+				<ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+			</Filters>
+		</RollingFile>
+		
+		<RollingFile name="infoFile" fileName="/mnt/logs/java/${SYS_NAME}_info.log" filePattern="/mnt/logs/java/${SYS_NAME}_info-%d{yyyy-MM-dd}.log">
+			<Policies>
+				<TimeBasedTriggeringPolicy modulate="true" interval="1" />
+			</Policies>
+			<DefaultRolloverStrategy fileIndex="max" max="5" />
+			<PatternLayout pattern="${LOG_PATTERN}"></PatternLayout>
+			<Filters>
+				<ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
+				<ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+			</Filters>
+		</RollingFile>
+		
+		<!-- 异步日志输出，包装其他类型的输出配置  -->
+		<Async name="AsyncLog">
+			<appender-ref ref="errorFile"/>
+			<appender-ref ref="warnFile"/>
+			<appender-ref ref="infoFile"/>
+			<appender-ref ref="Console"/>
+		</Async>
+	</Appenders>
+	
+	<Loggers>
+		<Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />
+		<Logger name="org.apache.catalina.util.LifecycleBase" level="error" />
+		<Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
+		<logger name="org.apache.sshd.common.util.SecurityUtils" level="warn"/>
+		<Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
+		<Logger name="org.crsh.plugin" level="warn" />
+		<logger name="org.crsh.ssh" level="warn"/>
+		<Logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="error" />
+		<Logger name="org.hibernate.validator.internal.util.Version" level="warn" />
+		<logger name="org.thymeleaf" level="warn"/>
+		<logger name="org.springframework.boot" level="info"/>
+		<logger name="com.hisun" level="info"/>
+		<Root level="info">
+			<AppenderRef ref="AsyncLog" />
+		</Root>
+	</Loggers>
+</configuration>

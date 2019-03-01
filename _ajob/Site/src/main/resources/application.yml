@@ -1,0 +1,47 @@
+################### 容器配置 ##########################
+server:
+  port: 8000
+  tomcat: 
+    max-threads: 2000
+    uri-encoding: UTF-8
+    access-log-enabled: true
+    access-log-pattern: "%{yyyy-MM-dd'T'HH:mm:ss'+08:00'}t|||INFO|${sys.name}|%{txcode}i%{serviceName}i|%{imei}i|%{requestId}i|%{seq}i|a|%{platform}i|%{inout}i|%D|%a \"%r\" %s %b"
+    accesslog.directory: /mnt/logs/java
+    accesslog.prefix: ${sys.name}_accesslog
+    remote-ip-header: x-forwarded-for
+
+################### MyBatis的配置 ##########################
+mybatis: 
+  configuration: 
+    mapUnderscoreToCamelCase: true
+    useColumnLabel: true
+    
+################### 系统配置 ##########################
+sys:
+  name: site
+
+################### 日志输出配置 #########################
+logging: 
+  config: 
+    classpath: log4j2.xml
+
+######################### 数据库配置 ###############################
+spring: 
+  datasource: 
+    url: jdbc:mysql://localhost:3306/site?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: abcccq
+    driver-class-name: com.mysql.jdbc.Driver
+    max-active: 100
+    test-on-borrow: true
+    test-on-return: true
+    mybatis.mapper-locations:
+
+  redis:
+    host: 192.168.1.15
+    port: 6789
+    password:
+    timeout: 200
+    pool:
+      maxActive: 1000
+
