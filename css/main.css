@@ -6764,6 +6764,11 @@ button.bg-dark:focus {
   display: block !important;
 }
 
+.d-block-bg {
+  display: block !important;
+  background-color: #8d94a0;
+}
+
 .d-table {
   display: table !important;
 }
