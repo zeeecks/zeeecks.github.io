@@ -506,11 +506,18 @@
       sort_statuses();
   };
 
+  // function disable_update_button() {
+  //   $('#update-button').attr('disabled', true);
+  //   $('#update-button-label').html('Loading');
+  //   $('#update-button-spinner').show();
+  // }
+
   function disable_update_button() {
-    $('#update-button').attr('disabled', true);
-    $('#update-button-label').html('Loading');
-    $('#update-button-spinner').show();
+    $('#update-button').attr('disabled', false);
+    $('#update-button-label').html('Update');
+    $('#update-button-spinner').hide();
   }
+
 
   function enable_update_button() {
     $('#update-button').attr('disabled', false);
