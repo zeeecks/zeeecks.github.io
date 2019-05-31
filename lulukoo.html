@@ -30,7 +30,7 @@
 
         <!-- topic dropdown -->
         <div class="form-group px-3">
-          <label for="exampleFormControlSelect2">Select Topic</label>
+          <label for="exampleFormControlSelect2">Select Media</label>
           <select class="form-control" id="topic-select">
             <option selected>Movies</option>
             <option selected>Animations</option>
@@ -59,13 +59,19 @@
       <nav class="mt-3 mb-3">
         <ul class="nav nav-pills" id="nav-tab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="pill" href="#nav-statuses" role="tab"><i class="far fa-comment"></i> Tweets</a>
+            <a class="nav-link active" data-toggle="pill" href="#nav-hot" role="tab"><i class="far fa-comment"></i> Hot</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="pill" href="#nav-chart" role="tab"><i class="far fa-chart-scatter"></i> Chart</a>
+            <a class="nav-link" data-toggle="pill" href="#nav-top" role="tab"><i class="far fa-comment"></i> Top</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="pill" href="#nav-users" role="tab"><i class="far fa-user-friends"></i> People</a>
+            <a class="nav-link" data-toggle="pill" href="#nav-new" role="tab"><i class="far fa-comment"></i> New</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#nav-trending" role="tab"><i class="far fa-chart-scatter"></i> Trending</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#nav-production_companies" role="tab"><i class="far fa-user-friends"></i> Production Companies</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="pill" href="#nav-urls" role="tab"><i class="far fa-link"></i> Links</a>
@@ -77,7 +83,7 @@
       <div class="tab-content" id="nav-tab-content">
 
         <!-- statuses (default) -->
-        <div class="tab-pane show active" id="nav-statuses" role="tabpanel">
+        <div class="tab-pane show active" id="nav-hot" role="tabpanel">
           <div class="row">
             <div class="col-lg-12 mb-3">
               <!-- sort buttons -->
@@ -116,9 +122,88 @@
           </div>
         </div>
 
+        <!-- statuses (default) -->
+        <div class="tab-pane show active" id="nav-top" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-12 mb-3">
+              <!-- sort buttons -->
+              <div id="status-sort-options" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-sm btn-light active">
+                  <input type="radio" name="options" value="relevance" id="btn-relevant" autocomplete="off" checked>
+                  <i class="far fa-search"></i> Relevance
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="velocity" id="btn-trending" autocomplete="off">
+                  <i class="far fa-chart-line"></i> Velocity
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="popularity" id="btn-popular" autocomplete="off">
+                  <i class="far fa-bullhorn"></i> Impact
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="age" id="btn-new" autocomplete="off">
+                  <i class="far fa-stopwatch"></i> New
+                </label>
+              </div>
+            </div>
+          </div>
+          <div id="relevance-toggle-form" class="row mb-3">
+            <div class="col-md-12">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="use-relevance-checkbox">
+                  <label class="custom-control-label" for="use-relevance-checkbox" style="cursor:pointer">Use relevance score</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div id="statuses" class="col-lg-12 mb-1" style="display:none">
+
+            </div>
+          </div>
+        </div>
+
+        <!-- statuses (default) -->
+        <div class="tab-pane show active" id="nav-new" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-12 mb-3">
+              <!-- sort buttons -->
+              <div id="status-sort-options" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-sm btn-light active">
+                  <input type="radio" name="options" value="relevance" id="btn-relevant" autocomplete="off" checked>
+                  <i class="far fa-search"></i> Relevance
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="velocity" id="btn-trending" autocomplete="off">
+                  <i class="far fa-chart-line"></i> Velocity
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="popularity" id="btn-popular" autocomplete="off">
+                  <i class="far fa-bullhorn"></i> Impact
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="age" id="btn-new" autocomplete="off">
+                  <i class="far fa-stopwatch"></i> New
+                </label>
+              </div>
+            </div>
+          </div>
+          <div id="relevance-toggle-form" class="row mb-3">
+            <div class="col-md-12">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="use-relevance-checkbox">
+                  <label class="custom-control-label" for="use-relevance-checkbox" style="cursor:pointer">Use relevance score</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div id="statuses" class="col-lg-12 mb-1" style="display:none">
+
+            </div>
+          </div>
+        </div>
 
         <!-- chart -->
-        <div class="tab-pane" id="nav-chart" role="tabpanel">
+        <div class="tab-pane" id="nav-trending" role="tabpanel">
           <div class="row">
             <div id="chart" class="col-lg-12 mb-1">
               <!-- interactive bubble chart -->
@@ -148,7 +233,7 @@
 
 
         <!-- users -->
-        <div class="tab-pane" id="nav-users" role="tabpanel">
+        <div class="tab-pane" id="nav-production_companies" role="tabpanel">
           <div class="row">
             <div id="users" class="col-lg-12 mb-1"></div>
           </div>
@@ -181,17 +266,47 @@
 
 <script type="text/javascript">
 
-  // the keywords associated with each topic share the same slider value
+  // movie genres:
+  // 1.1	Absurdist/surreal/whimsical
+  // 1.2	Action
+  // 1.3	Adventure
+  // 1.4	Comedy
+  // 1.5	Crime
+  // 1.6	Drama
+  // 1.7	Fantasy
+  // 1.8	Historical
+  // 1.9	Historical fiction
+  // 1.10	Horror
+  // 1.11	Magical realism
+  // 1.12	Mystery
+  // 1.13	Paranoid Fiction
+  // 1.14	Philosophical
+  // 1.15	Political
+  // 1.16	Romance
+  // 1.17	Saga
+  // 1.18	Satire
+  // 1.19	Science fiction
+  // 1.20	Social
+  // 1.21	Speculative
+  // 1.22	Thriller
+  // 1.23	Urban
+  // 1.24	Western
+
   var subtopics = [
-    { label: 'Debate', kw: ['debate', '辩论'] },
-    { label: 'Fox News', kw: ['fox', 'news', 'fox_news'] },
-    { label: 'Trish Regan', kw: ['trish', 'regan', 'trish_regan'] },
-    { label: 'Liu Xin', kw: ['liu', 'xin', '刘欣', 'thepointwithlx'] },
-    { label: 'Trade War', kw: ['trade', 'war', 'tradewar', '贸易战', 'tariff', '关税']},
-    { label: 'IP', kw: [' ip ', 'intellectual', 'property', '知识产权', 'steal']},
-    { label: 'China', kw: ['china','中国'] },
-    { label: 'Trump', kw: ['trump','donald'] },
+    { label: 'Action', kw: [] },
+    { label: 'Adventrue', kw: [] },
+    { label: 'Comedy', kw: [] },
+    { label: 'Drama', kw: [] },
+    { label: 'Historical', kw: [] },
+    { label: 'Horror', kw: [] },
+    { label: 'Mystery', kw: [] },
+    { label: 'Political', kw: [] },
+    { label: 'Romance', kw: [] },
+    { label: 'Science fiction', kw: [] },
+    { label: 'Thriller', kw: [] },
+    { label: 'Western', kw: [] },
   ];
+
 
   // maps from [1...5] to weights used to compute scores
   // default slider value is 3
