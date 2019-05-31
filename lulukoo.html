@@ -97,7 +97,38 @@
         <!-- statuses (default) -->
         <div class="tab-pane" id="nav-top" role="tabpanel">
           <div class="row">
-            <div id="top" class="col-lg-12 mb-1">
+            <div class="col-lg-12 mb-3">
+              <!-- sort buttons -->
+              <div id="status-sort-options" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-sm btn-light active">
+                  <input type="radio" name="options" value="relevance" id="btn-relevant" autocomplete="off" checked>
+                  <i class="far fa-search"></i> Relevance
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="velocity" id="btn-trending" autocomplete="off">
+                  <i class="far fa-chart-line"></i> Velocity
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="popularity" id="btn-popular" autocomplete="off">
+                  <i class="far fa-bullhorn"></i> Impact
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="age" id="btn-new" autocomplete="off">
+                  <i class="far fa-stopwatch"></i> New
+                </label>
+              </div>
+            </div>
+          </div>
+          <div id="relevance-toggle-form" class="row mb-3">
+            <div class="col-md-12">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="use-relevance-checkbox">
+                  <label class="custom-control-label" for="use-relevance-checkbox" style="cursor:pointer">Use relevance score</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div id="statuses" class="col-lg-12 mb-1" style="display:none">
 
             </div>
           </div>
@@ -105,9 +136,40 @@
 
         <!-- statuses (default) -->
         <div class="tab-pane" id="nav-new" role="tabpanel">
-
           <div class="row">
-            <div id="new" class="col-lg-12 mb-1">
+            <div class="col-lg-12 mb-3">
+              <!-- sort buttons -->
+              <div id="status-sort-options" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-sm btn-light active">
+                  <input type="radio" name="options" value="relevance" id="btn-relevant" autocomplete="off" checked>
+                  <i class="far fa-search"></i> Relevance
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="velocity" id="btn-trending" autocomplete="off">
+                  <i class="far fa-chart-line"></i> Velocity
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="popularity" id="btn-popular" autocomplete="off">
+                  <i class="far fa-bullhorn"></i> Impact
+                </label>
+                <label class="btn btn-sm btn-light">
+                  <input type="radio" name="options" value="age" id="btn-new" autocomplete="off">
+                  <i class="far fa-stopwatch"></i> New
+                </label>
+              </div>
+            </div>
+          </div>
+          <div id="relevance-toggle-form" class="row mb-3">
+            <div class="col-md-12">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="use-relevance-checkbox">
+                  <label class="custom-control-label" for="use-relevance-checkbox" style="cursor:pointer">Use relevance score</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div id="statuses" class="col-lg-12 mb-1" style="display:none">
+
             </div>
           </div>
         </div>
@@ -115,7 +177,28 @@
         <!-- chart -->
         <div class="tab-pane" id="nav-trending" role="tabpanel">
           <div class="row">
-            <div id="trending" class="col-lg-12 mb-1">
+            <div id="chart" class="col-lg-12 mb-1">
+              <!-- interactive bubble chart -->
+              <div class="row">
+                <div class="col-md-6">
+                  <ul>
+                    <li>Each bubble represents twitter status</li>
+                    <li>The size of each bubble is proportional to the number of followers</li>
+                    <li>"Popularity" is determined by the number of retweets and favorites</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul>
+                    <li>Click on a bubble for more details about the twitter status</li>
+                    <li>Click and drag to zoom in</li>
+                    <li>Double-click to reset zoom</li>
+                  </ul>
+                </div>
+              </div>
+              <div id="chart-wrapper">
+                <div id="bubblechart"></div>
+              </div>
+              <div id="context-menu"></div>
             </div>
           </div>
         </div>
