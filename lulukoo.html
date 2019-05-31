@@ -19,14 +19,14 @@
 
 <div class="container-fluid">
 <div class="row">
-    
+
     <!-- sidebar -->
     <nav class="col-lg-2 d-none d-lg-block bg-light sidebar">
       <div class="sidebar-sticky">
 
         <h5 class="mt-0 mb-3 text-center px-2 py-3 bg-dark text-light">
           <i class="fas fa-eye mr-1"></i> LULU View</h5>
-        
+
 
         <!-- topic dropdown -->
         <div class="form-group px-3">
@@ -42,19 +42,19 @@
         <div class="container">
           <div class="nav flex-column mb-3">
             <button type="button" class="btn btn btn-primary" id="update-button">
-              <span id="update-button-spinner" class="fa fa-spinner fa-spin mr-1" style="display:none"></span> <span id="update-button-label"></span> 
+              <span id="update-button-spinner" class="fa fa-spinner fa-spin mr-1"></span> <span id="update-button-label"></span>
             </button>
           </div>
         </div>
         <!-- topic sliders go here -->
-        <div id="sliders" class="container mt-1 mb-3" style="display: none;"></div>
+        <div id="sliders" class="container mt-1 mb-3"></div>
         <!-- powered-by -->
         <div id="powered-by" class="container text-center text-muted">Powered by <a href="https://kaleidoglobe.com">Kaleidoglobe</a></div></div>
       </div>
     </nav>
 
     <!-- main -->
-    <main id="main" role="main" class="ml-sm-auto col-lg-10 px-2" style="display:none;">
+    <main id="main" role="main" class="ml-sm-auto col-lg-10 px-2">
 
       <!-- tab headings -->
       <nav class="mt-3 mb-3">
@@ -84,19 +84,19 @@
               <!-- sort buttons -->
               <div id="status-sort-options" class="btn-group btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-sm btn-light active">
-                  <input type="radio" name="options" value="relevance" id="btn-relevant" autocomplete="off" checked> 
+                  <input type="radio" name="options" value="relevance" id="btn-relevant" autocomplete="off" checked>
                   <i class="far fa-search"></i> Relevance
                 </label>
                 <label class="btn btn-sm btn-light">
-                  <input type="radio" name="options" value="velocity" id="btn-trending" autocomplete="off"> 
+                  <input type="radio" name="options" value="velocity" id="btn-trending" autocomplete="off">
                   <i class="far fa-chart-line"></i> Velocity
                 </label>
                 <label class="btn btn-sm btn-light">
-                  <input type="radio" name="options" value="popularity" id="btn-popular" autocomplete="off"> 
+                  <input type="radio" name="options" value="popularity" id="btn-popular" autocomplete="off">
                   <i class="far fa-bullhorn"></i> Impact
                 </label>
                 <label class="btn btn-sm btn-light">
-                  <input type="radio" name="options" value="age" id="btn-new" autocomplete="off"> 
+                  <input type="radio" name="options" value="age" id="btn-new" autocomplete="off">
                   <i class="far fa-stopwatch"></i> New
                 </label>
               </div>
@@ -112,7 +112,7 @@
           </div>
           <div class="row">
             <div id="statuses" class="col-lg-12 mb-1" style="display:none">
-              
+
             </div>
           </div>
         </div>
@@ -195,7 +195,7 @@
   ];
 
   // maps from [1...5] to weights used to compute scores
-  // default slider value is 3 
+  // default slider value is 3
   var weight_lut = {
     1: 0.1,
     2: 0.5,
@@ -233,7 +233,7 @@
         }
       }
     }
-    return score; 
+    return score;
   }
 
   // calculate velocity as log10(popularity) / age_hours
@@ -300,7 +300,7 @@
         statuses.sort((a, b) => (a.age-b.age));
       }
     }
-    
+
     render_statuses();
   }
 
@@ -342,7 +342,7 @@
     <div class="media user">
       <img src="${u.profile_image_url_https}" class="mr-3 rounded-circle" width="48">
       <div class="media-body">
-      <div class="title mb-1"><strong>${u.name}</strong> 
+      <div class="title mb-1"><strong>${u.name}</strong>
       <a href="https://twitter.com/${u.screen_name}" target="_blank">@${u.screen_name}</a></div>
       <div class="meta mb-1">
         <span><i class="far fa-users"></i> ${numbers_with_commas(u.followers_count)}</span>
@@ -351,7 +351,7 @@
       <div class="text">${urlify(u.description)}</div>
       </div>
       </div>
-      </div>`;    
+      </div>`;
   }
 
   function url_html(u) {
@@ -375,12 +375,12 @@
         </div>
         </div>
         </div>
-        </div>`;    
+        </div>`;
     }
-    return '';    
+    return '';
   }
 
-  // render statuses inside div#statuses 
+  // render statuses inside div#statuses
   function render_statuses() {
     var statuses_html = [];
     for (var i = 0; i < 200; i++) {
@@ -389,7 +389,7 @@
     $('#statuses').html(statuses_html.join(''));
   }
 
-  // render users inside div#users 
+  // render users inside div#users
   function render_users() {
     var users_html = [];
     for (var i = 0; i < 200; i++) {
@@ -398,7 +398,7 @@
     $('#users').html('<div class="row">' + users_html.join('') + '</div>');
   }
 
-  // render urls inside div#urls 
+  // render urls inside div#urls
   function render_urls() {
     var urls_html = [];
     for (var i = 0; i < 200; i++) {
@@ -410,11 +410,11 @@
   // run this once statuses, users, and urls are update
   // will update lookup tables, and connections between entities
   function update_all() {
-      
+
       var now = moment(new Date());
       for (var i = 0; i < statuses.length; i++) {
           status_id_lut[statuses[i]['id']] = statuses[i];
-          statuses[i].age = moment.duration(now.diff(statuses[i].created_at)).asHours(); 
+          statuses[i].age = moment.duration(now.diff(statuses[i].created_at)).asHours();
           statuses[i].age_str = moment(statuses[i].created_at).fromNow();
           statuses[i].velocity = velocity(statuses[i]);
           statuses[i].popularity = popularity(statuses[i]);
@@ -425,7 +425,7 @@
       for (var i = 0; i < urls.length; i++) {
           url_lut[urls[i]['url']] = urls[i];
       }
-      
+
       for (var i = 0; i < statuses.length; i++) {
           statuses[i].user = user_id_lut[statuses[i].user_id];
           statuses[i].urls = [];
@@ -450,10 +450,10 @@
       $('#statuses').delay(250).fadeIn(500);
       $('#sliders').delay(750).fadeIn(500);
   }
-  
+
   // load data from endpoints
   function load_data() {
-    
+
     var loaded = 0;
     statuses = []; status_id_lut = {};
     users = []; user_id_lut = {};
@@ -463,8 +463,8 @@
     var increment_loaded = function() {
       loaded++;
       $('#update-button-label').html(`Loading ${loaded}/3`).redraw();
-      if (loaded == 3) { 
-        update_all(); 
+      if (loaded == 3) {
+        update_all();
       }
     };
 
@@ -491,7 +491,7 @@
 
   //
   // run at initialization
-  // 
+  //
 
   disable_update_button();
   load_data();
