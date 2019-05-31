@@ -59,7 +59,7 @@
       <nav class="mt-3 mb-3">
         <ul class="nav nav-pills" id="nav-tab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="pill" href="#nav-movies" role="tab"><i class="fab fa-film"></i> Movies</a>
+            <a class="nav-link active" data-toggle="pill" href="#nav-movies" role="tab"><i class="far fa-film"></i> Movies</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link active" data-toggle="pill" href="#nav-hot" role="tab"><i class="fab fa-gripfire"></i> Hot</a>
@@ -100,11 +100,11 @@
                 </label>
                 <label class="btn btn-sm btn-light">
                   <input type="radio" name="options" value="velocity" id="btn-trending" autocomplete="off">
-                  <i class="far fa-gripfire"></i> Hot
+                  <i class="fab fa-gripfire"></i> Hot
                 </label>
                 <label class="btn btn-sm btn-light">
                   <input type="radio" name="options" value="popularity" id="btn-popular" autocomplete="off">
-                  <i class="far fa-thumbs_up"></i> Top
+                  <i class="far fa-thumbs-up"></i> Top
                 </label>
                 <label class="btn btn-sm btn-light">
                   <input type="radio" name="options" value="age" id="btn-new" autocomplete="off">
@@ -551,18 +551,18 @@
     disable_update_button();
     load_data();
   };
-  //
-  // // create slider elements. the update_weights function is called onchange and oninput (touch interface)
-  // var weights = [];
-  // subtopics.forEach(function(subtopic, i) {
-  //   weights[i] = 3;
-  //   $('#sliders').append(`<div class="row">
-  //     <div class="col-sm-6">${subtopic.label}</div>
-  //     <div class="col-sm-6">
-  //       <input type="range" class="custom-range" value="3" min="1" max="5" step="1" id="slider-${i}" onchange="update_weight(${i}, this.value)" oninput="update_weight(${i}, this.value)">
-  //     </div>
-  //     </div>`);
-  // })
+
+  // create slider elements. the update_weights function is called onchange and oninput (touch interface)
+  var weights = [];
+  subtopics.forEach(function(subtopic, i) {
+    weights[i] = 3;
+    $('#sliders').append(`<div class="row">
+      <div class="col-sm-6">${subtopic.label}</div>
+      <div class="col-sm-6">
+        <input type="range" class="custom-range" value="3" min="1" max="5" step="1" id="slider-${i}" onchange="update_weight(${i}, this.value)" oninput="update_weight(${i}, this.value)">
+      </div>
+      </div>`);
+  })
 
 </script>
 
