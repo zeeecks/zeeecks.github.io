@@ -136,7 +136,7 @@
                   <!-- Modal -->
                   <div class="modal modal-xl fade" id="vid_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                      <!-- <div class="modal-content">
+                      <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="exampleModalLabel">Video Player</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -144,36 +144,27 @@
                           </button>
                         </div>
                         <div class="modal-body col-lg-24 mb-1">
-                          <iframe width="1000px" height="565px" src="https://www.youtube.com/embed/iGU7sOLuTbo" frameborder="0"
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/iGU7sOLuTbo" frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                           </iframe>
                         </div>
-
-                        <div class="btn-group align_right" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"></i> 2500</button>
-                          <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-down"></i> 100</button>
+                        <div class="modal-footer">
+                          <div class="btn-group align_right" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"></i> 2500</button>
+                            <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-down"></i> 100</button>
+                          </div>
+                          <form>
+                            <div class="form-group">
+                					    <label for="exampleFormControlTextarea1">Write a comment for the video!</label>
+                					    <textarea class="form-control" id="vid_modal_1_comment" rows="3"></textarea>
+                					  </div>
+                          </form>
+                          <a class="btn btn-secondary my-2 align_right" href="#" role="button">Post Comment</a>
                         </div>
-                        <form>
-                          <div class="form-group">
-              					    <label for="exampleFormControlTextarea1">Write a comment for the video!</label>
-              					    <textarea class="form-control" id="vid_modal_1_comment" rows="3"></textarea>
-              					  </div>
-                        </form>
-                        <a class="btn btn-secondary my-2 align_right" href="#" role="button">Post Comment</a>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                        <div class="album py-5 bg-light">
-                  			 <div class="container">
-                  				<div class="jumbotron">
-                  				  <h5 class="display-5">Video Player</h2>
-                            <form>
-                  					  <div class="form-group">
-                  					    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Comment</textarea>
-                  					  </div>
-                  					</form>
-                						<a class="btn btn-secondary my-2 align_right" href="#" role="button">Send Message</a>
-                  				</div>
-                  			</div>
-                  		</div>
+                        <!-- <button type="button" class="btn btn-danger my-2 align_right"><i class="far fa-thumbs-down"></i> 100</button>
+                        <button type="button" class="btn btn-primary my-2 align_right"><i class="far fa-thumbs-up"></i> 2500</button> -->
+                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                      </div>
                     </div>
                   </div>
                   <!-- Vid description -->
